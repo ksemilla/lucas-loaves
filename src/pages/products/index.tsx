@@ -3,6 +3,7 @@ import { products } from "../../const"
 import { Modal } from "../../components/Modal"
 import { useShoppingStore } from "../../stores/common"
 import { v4 as uuidv4 } from "uuid"
+import { Item, OrderItem } from "../../types"
 
 export function ProductList() {
   const [open, setOpen] = useState(false)

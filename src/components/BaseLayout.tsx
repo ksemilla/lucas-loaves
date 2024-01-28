@@ -5,7 +5,9 @@ export function BaseLayout() {
   return (
     <div>
       <Nav />
-      <Outlet />
+      <div className="pt-14">
+        <Outlet />
+      </div>
     </div>
   )
 }

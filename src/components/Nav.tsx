@@ -1,5 +1,6 @@
 import { Dialog } from "@headlessui/react"
 import {
+  ArrowRightEndOnRectangleIcon,
   Bars3Icon,
   ShoppingCartIcon,
   XMarkIcon,
@@ -7,7 +8,7 @@ import {
 import { useState } from "react"
 import { ShoppingCart } from "./ShoppingCart"
 import { Link } from "react-router-dom"
-import { useShoppingStore } from "../stores/common"
+import { useAuthStore, useShoppingStore } from "../stores/common"
 import { classNames } from "../uitls"
 
 const navigation = [
@@ -21,6 +22,8 @@ export function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [open, setOpen] = useState(false)
   const shoppingCart = useShoppingStore()
+  const authStore = useAuthStore()
+
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav
@@ -57,8 +60,30 @@ export function Nav() {
               {item.name}
             </Link>
           ))}
+          {authStore.isLogged && (
+            <Link
+              to="/orders"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Orders
+            </Link>
+          )}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-2 lg:items-center">
+          {!authStore.isLogged && (
+            <div>
+              <Link
+                to="/login"
+                className="inline-flex items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-md font-semibold text-gray-800 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hover:text-white"
+              >
+                Login
+                <ArrowRightEndOnRectangleIcon
+                  className="-mr-0.5 h-7 w-7"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+          )}
           <div
             className={classNames(
               "relative group",
