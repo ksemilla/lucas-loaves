@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Listbox, Transition } from "@headlessui/react"
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/outline"
 import { classNames } from "../../uitls"
+import { StatusBadge } from "../../components/StatusBadge"
 
 function OrderInline(props: { order: Order }) {
   const navitate = useNavigate()
@@ -21,7 +22,7 @@ function OrderInline(props: { order: Order }) {
         {props.order.mobile}
       </td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-        {props.order.status}
+        <StatusBadge status={props.order.status} />
       </td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
         {total}
@@ -119,7 +120,7 @@ export function OrdersPage() {
   )
 }
 
-const statusList = [
+export const statusList = [
   {
     value: "",
     label: "All",
@@ -165,7 +166,7 @@ function OrderStatusDropdown(props: {
             Status
           </Listbox.Label> */}
           <div className="relative z-0 mt-2">
-            <Listbox.Button className="relative flex space-x-2 cursor-default rounded-md bg-white pr-10 text-left text-gray-900 ring-inset sm:text-sm sm:leading-6">
+            <Listbox.Button className="relative flex space-x-2 cursor-default rounded-md pr-10 text-left text-gray-900 ring-inset sm:text-sm sm:leading-6">
               <span className="block truncate">Status:</span>
               <span className="block truncate">{statusLabel}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

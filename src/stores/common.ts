@@ -12,7 +12,7 @@ export const useShoppingStore = create<ShoppingStore>()((set) => ({
       arr.splice(idx, 1)
       return { ...state, orderItems: arr }
     }),
-  resetItems: () => set((state) => ({ ...state, items: [] })),
+  resetItems: () => set((state) => ({ ...state, orderItems: [] })),
 }))
 
 type AuthStoreType = {
@@ -31,7 +31,7 @@ export const useOrderStore = create<OrderStore>()((set, get) => ({
       id: uuidv4(),
       status: "pending",
       customerName: "John Doe",
-      mobile: "43634567",
+      mobile: "+61 (543) 2345 346",
       forPickup: true,
       notes: "I will pick this up 6am tomorrow",
       orderItems: [
@@ -141,7 +141,7 @@ export const useOrderStore = create<OrderStore>()((set, get) => ({
     },
   ],
   addOrder: (order) =>
-    set((state) => ({ ...state, orders: [...state.orders, order] })),
+    set((state) => ({ ...state, orders: [order, ...state.orders] })),
   updateOrder: (id, order) =>
     set((state) => {
       const _orders = state.orders
@@ -156,4 +156,5 @@ export const useOrderStore = create<OrderStore>()((set, get) => ({
       return get().orders
     }
   },
+  getOrder: (id) => get().orders.find((obj) => obj.id === id),
 }))

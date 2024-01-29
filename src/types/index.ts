@@ -57,4 +57,5 @@ export type OrderStore = {
   addOrder: (order: Order) => void
   updateOrder: (id: string, order: Order) => void
   getOrders: (orderStatus?: OrderStatus) => Order[]
+  getOrder: (id: string) => Order | undefined
 }

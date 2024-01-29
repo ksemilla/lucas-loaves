@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
 import { useShoppingStore } from "../stores/common"
+import { useNavigate } from "react-router-dom"
 
 type ShoppingCartProps = {
   open: boolean
@@ -9,11 +10,16 @@ type ShoppingCartProps = {
 }
 
 export function ShoppingCart(props: ShoppingCartProps) {
+  const navigate = useNavigate()
   const shoppingCart = useShoppingStore()
   const total = shoppingCart.orderItems.reduce(
     (acc, o) => acc + o.price * o.quantity,
     0
   )
+  const onCheckout = () => {
+    props.setOpen(false)
+    navigate("/checkout")
+  }
   return (
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={props.setOpen}>
@@ -114,12 +120,12 @@ export function ShoppingCart(props: ShoppingCartProps) {
                               Shipping and taxes calculated at checkout.
                             </p>
                             <div className="mt-6">
-                              <a
-                                href="#"
+                              <div
                                 className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                onClick={onCheckout}
                               >
                                 Checkout
-                              </a>
+                              </div>
                             </div>
                             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                               <p>
