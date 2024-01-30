@@ -158,3 +158,25 @@ export const useOrderStore = create<OrderStore>()((set, get) => ({
   },
   getOrder: (id) => get().orders.find((obj) => obj.id === id),
 }))
+
+export type Application = {
+  name: string
+  email: string
+  resume: any
+  coverLetter: any
+  position: string
+}
+
+type ApplicationStore = {
+  applications: Application[]
+  addApplication: (application: Application) => void
+}
+
+export const useApplicationStore = create<ApplicationStore>()((set) => ({
+  applications: [],
+  addApplication: (application) =>
+    set((state) => ({
+      ...state,
+      applications: [...state.applications, application],
+    })),
+}))

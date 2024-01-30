@@ -15,6 +15,7 @@ const navigation = [
   { name: "Products", href: "/products" },
   { name: "About", href: "/about" },
   { name: "Careers", href: "/careers" },
+  { name: "Classes", href: "/classes" },
   { name: "Contact", href: "#" },
 ]
 
@@ -61,12 +62,20 @@ export function Nav() {
             </Link>
           ))}
           {authStore.isLogged && (
-            <Link
-              to="/orders"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Orders
-            </Link>
+            <>
+              <Link
+                to="/orders"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Orders
+              </Link>
+              <Link
+                to="/applications"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Applications
+              </Link>
+            </>
           )}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-2 lg:items-center">

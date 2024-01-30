@@ -12,6 +12,7 @@ import LoginPage from "./pages/login"
 import { OrdersPage } from "./pages/orders"
 import { OrderDetail } from "./pages/orders/OrderDetail"
 import { CheckoutPage } from "./pages/checkout/CheckoutPage"
+import { ApplicationPage } from "./pages/applications/ApplicationList"
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ export const router = createBrowserRouter(
       <Route path="/orders" element={<OrdersPage />} />
       <Route path="/orders/:id" element={<OrderDetail />} />
       <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/applications" element={<ApplicationPage />} />
     </Route>
   )
 )

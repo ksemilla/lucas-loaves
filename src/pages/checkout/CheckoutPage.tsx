@@ -174,7 +174,7 @@ export function CheckoutPage() {
   }, [open])
 
   return (
-    <div className="pt-14 m-auto max-w-7xl">
+    <div className="pt-14 m-auto max-w-3xl">
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className="grid sm:grid-cols-12 gap-4">

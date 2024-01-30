@@ -1,7 +1,8 @@
 import { Fragment, useEffect } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
+import { Application, useApplicationStore } from "../stores/common"
 
 type ApplyFormProps = {
   open: boolean
@@ -15,10 +16,13 @@ export function ApplyForm(props: ApplyFormProps) {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm()
+    control,
+  } = useForm<Application>()
+
+  const applicationStore = useApplicationStore()
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    applicationStore.addApplication({ ...data, position: props.position })
   })
 
   useEffect(() => {
@@ -133,13 +137,28 @@ export function ApplyForm(props: ApplyFormProps) {
                                 Cover Letter
                               </label>
                               <div className="mt-2">
-                                <input
-                                  type="file"
-                                  // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                  placeholder="Enter name"
-                                  {...register("coverLetter", {
-                                    required: "This field is required",
-                                  })}
+                                <Controller
+                                  control={control}
+                                  name="coverLetter"
+                                  rules={{ required: "This field is required" }}
+                                  render={({
+                                    field: { value, onChange, ...field },
+                                  }) => {
+                                    return (
+                                      <input
+                                        {...field}
+                                        type="file"
+                                        // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Enter name"
+                                        value={value?.fileName}
+                                        onChange={(e) => {
+                                          if (e.target.files) {
+                                            onChange(e.target?.files[0])
+                                          }
+                                        }}
+                                      />
+                                    )
+                                  }}
                                 />
                               </div>
                               {errors?.coverLetter ? (
@@ -159,13 +178,28 @@ export function ApplyForm(props: ApplyFormProps) {
                                 Resume
                               </label>
                               <div className="mt-2">
-                                <input
-                                  type="file"
-                                  // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                  placeholder="Enter name"
-                                  {...register("resume", {
-                                    required: "This field is required",
-                                  })}
+                                <Controller
+                                  control={control}
+                                  name="resume"
+                                  rules={{ required: "This field is required" }}
+                                  render={({
+                                    field: { value, onChange, ...field },
+                                  }) => {
+                                    return (
+                                      <input
+                                        {...field}
+                                        type="file"
+                                        // className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Enter name"
+                                        value={value?.fileName}
+                                        onChange={(e) => {
+                                          if (e.target.files) {
+                                            onChange(e.target?.files[0])
+                                          }
+                                        }}
+                                      />
+                                    )
+                                  }}
                                 />
                               </div>
                               {errors?.resume ? (
