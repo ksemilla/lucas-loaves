@@ -346,6 +346,7 @@ export function CheckoutPage() {
 
             <div className="col-span-12 text-xl font-medium flex items-center space-x-4">
               <span>Shipping Address</span>{" "}
+              <span className="text-sm">Same as billing?</span>
               <input type="checkbox" {...register("shippingSameAsBilling")} />
             </div>
 
