@@ -23,6 +23,7 @@ export function ApplyForm(props: ApplyFormProps) {
 
   const onSubmit = handleSubmit((data) => {
     applicationStore.addApplication({ ...data, position: props.position })
+    props.setOpen(false)
   })
 
   useEffect(() => {

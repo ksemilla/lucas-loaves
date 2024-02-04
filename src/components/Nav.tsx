@@ -65,12 +65,12 @@ export function Nav() {
               >
                 Orders
               </Link>
-              {/* <Link
+              <Link
                 to="/applications"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Applications
-              </Link> */}
+              </Link>
             </>
           )}
         </div>

@@ -1,5 +1,4 @@
 import { Application, useApplicationStore } from "../../stores/common"
-import { StatusBadge } from "../../components/StatusBadge"
 
 function ApplicatinInline(props: { application: Application }) {
   return (
