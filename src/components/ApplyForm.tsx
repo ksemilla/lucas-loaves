@@ -211,7 +211,9 @@ export function ApplyForm(props: ApplyFormProps) {
                                 </p>
                               ) : null}
                             </div>
-                            <button>Submit</button>
+                            <button className="mt-4 rounded-md bg-indigo-600 px-2.5 py-3 text-xl font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                              Submit
+                            </button>
                           </form>
                         </div>
                       </div>

@@ -26,7 +26,7 @@ export function Nav() {
   const authStore = useAuthStore()
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 bg-white">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white opacity-90">
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -34,11 +34,7 @@ export function Nav() {
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
+            <img className="h-8 w-auto" src="src/assets/logo.png" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -69,12 +65,12 @@ export function Nav() {
               >
                 Orders
               </Link>
-              <Link
+              {/* <Link
                 to="/applications"
                 className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Applications
-              </Link>
+              </Link> */}
             </>
           )}
         </div>
