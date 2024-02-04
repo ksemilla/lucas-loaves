@@ -86,7 +86,7 @@ export function HomePage() {
           />
           <div className="absolute inset-0 z-10 bg-black/30 flex justify-center items-center">
             <div className="flex flex-col items-center space-y-4">
-              <img src="src/assets/logo.png" />
+              <img src="/logo.png" />
               <p className="text-white text-5xl font-semibold">
                 Open from 7am - 4pm
               </p>
