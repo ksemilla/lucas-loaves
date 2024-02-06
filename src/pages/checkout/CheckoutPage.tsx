@@ -134,7 +134,12 @@ export function CheckoutPage() {
   const orderStore = useOrderStore()
   const shoppingCart = useShoppingStore()
   const methods = useForm<Order>()
-  const { register, handleSubmit, control } = methods
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = methods
   const sameAsBilling = useWatch({ control, name: "shippingSameAsBilling" })
   const [cardNumber, setCardNumber] = useState("")
   const [open, setOpen] = useState(false)
@@ -194,6 +199,11 @@ export function CheckoutPage() {
                   {...register("customerName", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.customerName ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter your name.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -210,6 +220,11 @@ export function CheckoutPage() {
                   {...register("mobile", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.mobile ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter your mobile.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -245,6 +260,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.address1", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.address1 ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter your address 1.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -277,6 +297,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.street", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.street ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter street.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -293,6 +318,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.city", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.city ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter city.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -309,6 +339,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.state", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.state ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter state.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -325,6 +360,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.country", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.country ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter country.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -341,6 +381,11 @@ export function CheckoutPage() {
                   {...register("billingAddress.zipCode", { required: true })}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {errors?.billingAddress?.zipCode ? (
+                  <p className="mt-2 text-sm text-red-600" id="email-error">
+                    Please enter zipCode.
+                  </p>
+                ) : null}
               </div>
             </div>
 
